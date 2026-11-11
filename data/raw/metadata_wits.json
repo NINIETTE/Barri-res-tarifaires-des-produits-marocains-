@@ -1,0 +1,25 @@
+{
+  "date_extraction_utc": "2026-11-11T19:48:24.960267+00:00",
+  "source": "WITS — Banque mondiale / UNCTAD TRAINS",
+  "endpoint": "https://wits.worldbank.org/API/V1/SDMX/V21/datasource/TRN/reporter/{rep}/partner/000/product/070200/year/{year}/datatype/reported?format=JSON",
+  "produit": "HS 070200 (tomates fraîches ou réfrigérées)",
+  "type_tarif": "MFN (droit NPF) — moyenne simple",
+  "declarants": {
+    "918": "European Union (agrégat)",
+    "826": "United Kingdom",
+    "643": "Russian Federation",
+    "757": "Switzerland",
+    "682": "Saudi Arabia",
+    "784": "United Arab Emirates",
+    "842": "United States",
+    "392": "Japan",
+    "156": "China",
+    "699": "India"
+  },
+  "lignes": 95,
+  "annees": [
+    2010,
+    2023
+  ],
+  "avertissement": "Ces taux sont les droits NPF déclarés par le pays importateur. Le Maroc bénéficie de taux préférentiels (accord UE-Maroc), souvent 0 %. WITS ne fournit pas le taux préférentiel Maroc (partner/504 -> 404). Ces valeurs ne doivent donc PAS être présentées comme le tarif subi par le Maroc."
+}

@@ -1,0 +1,70 @@
+{
+  "n_observations": 427,
+  "split": {
+    "train": 272,
+    "validation": 71,
+    "test": 84
+  },
+  "features": [
+    "log_gdp",
+    "log_distance"
+  ],
+  "features_ecartees": {
+    "trend": "un arbre ne peut pas extrapoler une tendance",
+    "eu_member / preferential_agreement": "redondant avec le pays, non sourcé",
+    "tariff_npf_pct": "couverture insuffisante dans le modèle principal"
+  },
+  "hyperparametres": {
+    "ridge_alpha": 1.0,
+    "random_forest": {
+      "n_estimators": 300,
+      "max_depth": 8,
+      "min_samples_leaf": 1
+    }
+  },
+  "resultats_test": [
+    {
+      "modele": "Baseline (moyenne)",
+      "MAE_val": NaN,
+      "R2_val": NaN,
+      "MAE_test": 3.5187712453906426,
+      "RMSE_test": 4.317851136477847,
+      "R2_test": -0.002344047803723326
+    },
+    {
+      "modele": "Ridge (alpha=1.0)",
+      "MAE_val": 2.3371197493405083,
+      "R2_val": 0.38239721266461213,
+      "MAE_test": 2.8865117082411897,
+      "RMSE_test": 3.825377562713615,
+      "R2_test": 0.21326205425872613
+    },
+    {
+      "modele": "Random Forest (300, 8, 1)",
+      "MAE_val": 1.8783264688438002,
+      "R2_val": 0.5453907566836813,
+      "MAE_test": 2.7381233565608176,
+      "RMSE_test": 3.6436672870310756,
+      "R2_test": 0.2862289784346811
+    },
+    {
+      "modele": "Régression simple (PIB)",
+      "MAE_val": 2.5383394720430466,
+      "R2_val": 0.2282019663414474,
+      "MAE_test": 3.1516454046466604,
+      "RMSE_test": 4.308571519608424,
+      "R2_test": 0.0019596549053502166
+    }
+  ],
+  "elasticite": {
+    "coef_log_tariff": 2.215343909935809,
+    "se": 0.7328132892870343,
+    "ic95_bas": 0.7790298629332222,
+    "ic95_haut": 3.6516579569383962,
+    "n_observations": 174,
+    "n_partenaires": 26,
+    "r2_train": 0.43300723795792573,
+    "r2_test": 0.1834300144662292,
+    "interpretation": "Coefficient log(tarif NPF) = +2.215. Un doublement du droit NPF augmente la valeur exportée d'environ 364 %, toutes choses égales par ailleurs. Le signe POSITIF est contre-intuitif mais cohérent avec la structure du marché : les droits NPF les plus élevés sont ceux de l'UE (8,8 à 14,4 %), or l'UE absorbe 83 % des exportations marocaines grâce à l'accord d'association qui abaisse le tarif effectif. Le NPF mesure donc ici l'appartenance au marché européen, pas une barrière subie. ATTENTION : il s'agit du NPF, pas du tarif préférentiel effectivement payé par le Maroc ; l'élasticité mesure un effet de sélection des marchés, pas un effet causal du tarif."
+  }
+}

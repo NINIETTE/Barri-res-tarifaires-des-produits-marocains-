@@ -1,0 +1,66 @@
+{
+  "date_construction_utc": "2026-11-11T19:54:39.861589+00:00",
+  "type": "DONNÉES RÉELLES — aucune simulation",
+  "lignes": 506,
+  "colonnes": 32,
+  "partenaires": 83,
+  "annees": [
+    2010,
+    2023
+  ],
+  "couverture_par_variable": {
+    "primaryValue": {
+      "source": "UN Comtrade (extrait)",
+      "renseignees": 506,
+      "manquantes": 0,
+      "taux_renseignement_pct": 100.0
+    },
+    "netWgt": {
+      "source": "UN Comtrade (extrait)",
+      "renseignees": 506,
+      "manquantes": 0,
+      "taux_renseignement_pct": 100.0
+    },
+    "gdp_partner_usd": {
+      "source": "Banque mondiale WDI NY.GDP.MKTP.CD",
+      "renseignees": 434,
+      "manquantes": 72,
+      "taux_renseignement_pct": 85.8
+    },
+    "distance_km_cepii": {
+      "source": "CEPII dist_cepii",
+      "renseignees": 491,
+      "manquantes": 15,
+      "taux_renseignement_pct": 97.0
+    },
+    "tariff_npf_pct": {
+      "source": "WITS / UNCTAD TRAINS (MFN, moyenne simple)",
+      "renseignees": 246,
+      "manquantes": 260,
+      "taux_renseignement_pct": 48.6
+    }
+  },
+  "avertissements": [
+    "tariff_npf_pct est le droit NPF déclaré par le pays importateur. Le Maroc bénéficie de taux préférentiels (accord UE-Maroc), souvent 0 %. Ce n'est donc PAS le tarif effectivement subi par le Maroc.",
+    "Les 72 observations sans PIB correspondent à des partenaires hors du référentiel Banque mondiale ou à des pays sans déclaration pour l'année.",
+    "Aucune variable de préférence commerciale n'a été fabriquée : la variable preferential_agreement du projet initial a été supprimée faute de source."
+  ],
+  "sources": [
+    {
+      "nom": "UN Comtrade",
+      "fichier": "data/raw/comtrade_maroc_tomates_2010_2023.csv"
+    },
+    {
+      "nom": "Banque mondiale",
+      "fichier": "data/raw/worldbank_gdp_partners.csv"
+    },
+    {
+      "nom": "WITS / UNCTAD TRAINS",
+      "fichier": "data/raw/wits_tarifs_npf_2010_2023.csv"
+    },
+    {
+      "nom": "CEPII",
+      "fichier": "data/raw/cepii_distances_mar.csv"
+    }
+  ]
+}

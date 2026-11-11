@@ -1,0 +1,11 @@
+{
+  "coef_log_tariff": 2.215343909935809,
+  "se": 0.7328132892870343,
+  "ic95_bas": 0.7790298629332222,
+  "ic95_haut": 3.6516579569383962,
+  "n_observations": 174,
+  "n_partenaires": 26,
+  "r2_train": 0.43300723795792573,
+  "r2_test": 0.1834300144662292,
+  "interpretation": "Coefficient log(tarif NPF) = +2.215. Un doublement du droit NPF augmente la valeur exportée d'environ 364 %, toutes choses égales par ailleurs. Le signe POSITIF est contre-intuitif mais cohérent avec la structure du marché : les droits NPF les plus élevés sont ceux de l'UE (8,8 à 14,4 %), or l'UE absorbe 83 % des exportations marocaines grâce à l'accord d'association qui abaisse le tarif effectif. Le NPF mesure donc ici l'appartenance au marché européen, pas une barrière subie. ATTENTION : il s'agit du NPF, pas du tarif préférentiel effectivement payé par le Maroc ; l'élasticité mesure un effet de sélection des marchés, pas un effet causal du tarif."
+}

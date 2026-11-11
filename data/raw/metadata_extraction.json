@@ -1,0 +1,50 @@
+{
+  "date_extraction_utc": "2026-11-11T19:23:43.680211+00:00",
+  "type": "DONNÉES RÉELLES — extraites d'APIs publiques, aucune simulation",
+  "sources": [
+    {
+      "nom": "UN Comtrade",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+      "parametres": {
+        "reporterCode": 504,
+        "cmdCode": "0702",
+        "flowCode": "X",
+        "partnerCode": "tous",
+        "period": "2010-2023"
+      },
+      "licence": "Données publiques ONU, citées obligatoirement (UN Comtrade). Endpoint preview : 500 lignes max par requête, sans clé.",
+      "appels_http_effectues": 0
+    },
+    {
+      "nom": "Banque mondiale — World Development Indicators",
+      "url": "https://api.worldbank.org/v2/country/{iso3}/indicator/NY.GDP.MKTP.CD",
+      "indicateur": "NY.GDP.MKTP.CD — PIB courant (USD)",
+      "licence": "CC BY 4.0"
+    }
+  ],
+  "nb_observations": 506,
+  "nb_annees": 14,
+  "nb_partenaires": 83,
+  "annees_couvertes": [
+    2010,
+    2023
+  ],
+  "totaux_declares_par_comtrade_usd": {
+    "2010": 299704958.0,
+    "2011": 430619360.0,
+    "2012": 401902617.0,
+    "2013": 429028523.0,
+    "2014": 481422017.0,
+    "2015": 542519343.247,
+    "2016": 512006643.0,
+    "2017": 580522471.278,
+    "2018": 678164690.691,
+    "2019": 784219007.434,
+    "2020": 786536760.426,
+    "2021": 855911188.677,
+    "2022": 1024593185.939,
+    "2023": 1140296730.929
+  },
+  "observations_sans_pib": 72,
+  "note": "Les variables tariff_rate, distance_km et preferential_agreement ne figurent PAS dans ce fichier : elles ne sont pas fournies par ces APIs et devront provenir de WITS/OMC et CEPII, ou être explicitement déclarées comme non disponibles."
+}

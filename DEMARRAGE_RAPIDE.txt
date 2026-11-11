@@ -1,0 +1,105 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              PROJET BARRIÈRES TARIFAIRES — DÉMARRAGE RAPIDE                  ║
+║                    Tomates marocaines HS 0702 — Projet 35                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+STATUT : projet terminé, données réelles, pipeline reproductible.
+
+  Binôme      : Hiba Yacoubi / Meriem Ninia
+  Établissement : ENCG Settat — Master Commerce International
+  Encadrant   : A. Larhlimi
+  Période     : 2010-2023
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ CE QU'IL FAUT LIVRER                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  rapport/rapport.pdf                             Rapport scientifique (15 p.)
+  soutenance/soutenance.pdf                       Support de soutenance (18 vues)
+  notebooks/analyse_barrieres_tarifaires_maroc.ipynb   Notebook exécuté (13/13)
+  DICTIONNAIRE_VARIABLES.md                       Dictionnaire v2.0, par source
+  data/processed/dataset_merged.csv               Dataset final (506 × 32)
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DONNÉES — QUATRE SOURCES PUBLIQUES, AUCUNE SIMULATION                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  UN Comtrade          Exportations Maroc, HS 0702      506 obs., 80 partenaires
+  Banque mondiale      PIB courant NY.GDP.MKTP.CD       85,8 % couvert
+  WITS/UNCTAD TRAINS   Droits NPF HS 070200             246 obs., 98,2 % de la valeur
+  CEPII                Distances bilatérales            97,0 % couvert
+
+  Métadonnées d'extraction : data/raw/metadata_extraction.json
+                             data/raw/metadata_wits.json
+                             data/processed/metadata_dataset.json
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ REPRODUIRE LE PIPELINE                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  cd ~/projet_barriere_tarifaire
+  source venv/bin/activate
+
+  python scripts/extract_real_data.py      # Comtrade + Banque mondiale
+  python scripts/extract_wits_tariffs.py   # WITS (cache par requête, ~15 min)
+  python scripts/build_dataset.py          # fusion + variables calculées
+  python scripts/analyse_exploratoire.py   # EDA, 5 figures
+  python scripts/modelisation.py           # modèles + élasticité
+
+  python scripts/test_reproductibilite.py  # vérifie tout le pipeline
+
+  Les réponses HTTP sont mises en cache : relancer ne re-sollicite pas les APIs.
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ RÉSULTATS CLÉS                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Exportations 2010-2023    300 M$ -> 1 140 M$  (+280 %, 10,8 %/an)
+  Premier marché            France — 66,4 % du total
+  Top 5                     94,2 % du total
+  HHI                       0,652 (2010) -> 0,395 (2023)
+  Part de l'UE              83,4 %
+
+  Meilleur modèle           Random Forest (300, 8, 1)
+    R² test                 0,286
+    MAE test                2,738
+  Baseline (moyenne)        R² test -0,002
+
+  Élasticité au droit NPF   +2,22  [IC95 +0,78 ; +3,65], n = 174
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ATTENTION — LIMITE MÉTHODOLOGIQUE À CONNAÎTRE                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Le droit WITS est le droit NPF (Most Favoured Nation), PAS le tarif payé par
+  le Maroc. Sous l'accord d'association UE-Maroc, les tomates entrent en
+  franchise ou à taux réduit. L'API ne fournit pas le taux préférentiel Maroc
+  (partner/504 -> 404).
+
+  Conséquence : l'élasticité estimée est POSITIVE (+2,22). Ce n'est pas une
+  anomalie — les NPF élevés sont ceux de l'UE, qui reçoit 83 % des flux grâce
+  aux préférences. La variable mesure l'appartenance au marché européen, pas
+  la barrière subie. H1 n'est donc pas testable avec ces données.
+
+  Cette limite est documentée dans le rapport (§2.5 et §6.2), le dictionnaire
+  des variables, les métadonnées WITS et les slides.
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ARCHIVE                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  archive/version_simulee/  contient l'ancienne version (données fabriquées par
+  generate_demo_data.py, seed 42). Conservée uniquement pour la traçabilité.
+  NE PAS UTILISER POUR LE RENDU. Voir archive/version_simulee/README_ARCHIVE.md
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DÉPENDANCES                                                                  │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  python3 -m venv venv
+  venv/bin/pip install -r requirements.txt
+
+  Python 3.14.8 | numpy 2.5.4 | pandas 3.1.1 | scikit-learn 1.9.1
+  matplotlib 3.11.2 | seaborn 0.13.2 | graine aléatoire 42
+
+Dernière mise à jour : 11 novembre 2026

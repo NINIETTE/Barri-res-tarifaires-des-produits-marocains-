@@ -1,0 +1,41 @@
+# Projet : Barrières tarifaires sur les exportations marocaines
+# Date : 10 novembre 2026
+# Python version : >=3.8
+
+# Core data science libraries
+numpy>=1.21.0
+pandas>=1.3.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Machine learning
+scikit-learn>=1.0.0
+
+# API and web requests
+requests>=2.26.0
+
+# Jupyter notebook
+jupyter>=1.0.0
+notebook>=6.4.0
+ipykernel>=6.0.0
+
+# Statistical analysis (optional)
+scipy>=1.7.0
+statsmodels>=0.13.0
+
+# Data visualization (optional)
+plotly>=5.0.0
+
+# Progress bars
+tqdm>=4.62.0
+
+# Testing (optional)
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# Code quality
+black>=22.0.0
+flake8>=4.0.0
+
+# Documentation
+jupytext>=1.13.0
